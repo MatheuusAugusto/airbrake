@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Jogo</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+      <script>
+        var jogador = 'X';
+        var jogada = 0;
+        function chkJogo(id)
+        {
+            var src = chkSrc(id);
+            if(src == "branco.png")
+            {
+              document.getElementById(id).src = "img/" + jogador + ".png";
+              jogada++;
+            if(chkVitoria())
+            {
+              alert("Fim do Jogo! Vitoria do " + jogador);
+              location.reload();
+            }
+            if(jogada >= 9)
+            {
+              alert("Jogo Empatado.");
+              location.reload();
+            }
+            if(jogador == 'X')
+            {
+                jogador = 'O';
+            }
+
+            else
+            {
+              jogador = 'X';
+            }
+            }
+
+        }
+        function chkSrc(id)
+        {
+            var src = document.getElementById(id).src;
+            return src.substring(src.length - 10, src.length);
+        }
+
+        function chkVitoria()
+        {
+            if((chkSrc('cel1') === chkSrc('cel2')) && (chkSrc('cel1') === chkSrc('cel3')) && chkSrc('cel1') != 'branco.png')
+            {
+              return true;
+            }
+            if((chkSrc('cel4') === chkSrc('cel5')) && (chkSrc('cel4') === chkSrc('cel6')) && chkSrc('cel4') != 'branco.png')
+            {
+              return true;
+            }
+            if((chkSrc('cel7') === chkSrc('cel8')) && (chkSrc('cel7') === chkSrc('cel9')) && chkSrc('cel7') != 'branco.png')
+            {
+              return true;
+            }
+            if((chkSrc('cel1') === chkSrc('cel4')) && (chkSrc('cel1') === chkSrc('cel7')) && chkSrc('cel1') != 'branco.png')
+            {
+              return true;
+            }
+            if((chkSrc('cel2') === chkSrc('cel5')) && (chkSrc('cel2') === chkSrc('cel8')) && chkSrc('cel2') != 'branco.png')
+            {
+              return true;
+            }
+            if((chkSrc('cel3') === chkSrc('cel6')) && (chkSrc('cel3') === chkSrc('cel9')) && chkSrc('cel3') != 'branco.png')
+            {
+              return true;
+            }
+            if((chkSrc('cel1') === chkSrc('cel5')) && (chkSrc('cel1') === chkSrc('cel9')) && chkSrc('cel1') != 'branco.png')
+            {
+              return true;
+            }
+            if((chkSrc('cel3') === chkSrc('cel5')) && (chkSrc('cel3') === chkSrc('cel7')) && chkSrc('cel3') != 'branco.png')
+            {
+              return true;
+            }
+            return false;
+        }
+
+
+    </script>
+</head>
+<body>
+  <nav class="black black-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" class="brand-logo">Jogo da Velha</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="https://mega.nz/#!IuRxCYrb!0J8a48mZzzF95KQW6y46HIV3nvPIqCJufhWolvInGNY">Download Codigo Fonte</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav> <br><br>
+      <table border="12" align="center" cellpadding="5">
+        <tr>
+            <td><img src="img/branco.png" id="cel1" onclick="chkJogo(this.id)"></td>
+            <td><img src="img/branco.png" id="cel2" onclick="chkJogo(this.id)"></td>
+            <td><img src="img/branco.png" id="cel3" onclick="chkJogo(this.id)"></td>
+        </tr>
+
+        <tr>
+            <td><img src="img/branco.png" id="cel4" onclick="chkJogo(this.id)"></td>
+            <td><img src="img/branco.png" id="cel5" onclick="chkJogo(this.id)"></td>
+            <td><img src="img/branco.png" id="cel6" onclick="chkJogo(this.id)"></td>
+        </tr>   
+
+       <tr>
+            <td><img src="img/branco.png" id="cel7" onclick="chkJogo(this.id)"></td>
+            <td><img src="img/branco.png" id="cel8" onclick="chkJogo(this.id)"></td>
+            <td><img src="img/branco.png" id="cel9" onclick="chkJogo(this.id)"></td>
+        </tr>   
+    </table>
+
+<br><br>
+  <center>
+<a href="Principal.html" class="btn-large waves-effect waves-light black">Voltar</a>
+  </center> <br><br>
+
+  
+
+  <footer class="page-footer black">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Trabalho Final</h5>
+          <p class="grey-text text-lighten-4">Introdução e programação para internet.</p>
+
+
+        </div>
+
+        <div class="col l3 s12">
+
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Feito por <a class="orange-text text-lighten-3">Matheus Augusto, Igor Lacerda, Lucas Honorio.</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
